@@ -1,0 +1,488 @@
+@import url("https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap");
+
+@font-face {
+  font-family: "ModernNegraDemo";
+  src: url("../font/Modern-Negra-Demo.ttf") format("truetype");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --black: #000;
+  --white: #fff;
+  --secondary-color: #e7d393;
+  --negrademo-font: "ModernNegraDemo";
+  --text-gradient: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.87) 1%,
+    rgba(137, 137, 137, 1) 100%
+  );
+  --card-gradient: linear-gradient(
+    180deg,
+    rgba(49, 49, 49, 1) 1%,
+    rgba(15, 15, 15, 1) 100%
+  );
+  --green-color: #236910;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: var(--black);
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  border-radius: 10px;
+  background-color: var(--green-color);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+  background-color: var(--black);
+  font-family: "Mona Sans", sans-serif;
+  width: 100vw;
+  height: 100vh;
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
+section {
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+.footer {
+    padding-top: 80px;
+    padding-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+    align-content: center;
+}
+
+/* Custom Color Classes */
+
+.text-white {
+  color: var(--white);
+}
+.text-black {
+  color: var(--black);
+}
+.text-sec {
+  color: var(--secondary-color);
+}
+
+body a {
+  text-decoration: none;
+  color: var(--white);
+}
+
+.navigation {
+  padding: 30px 0;
+  color: var(--white);
+  opacity: 0;
+  animation: fadeSlideUpScale 1.5s ease-out 0.3s forwards;
+}
+
+@keyframes fadeSlideUpScale {
+  0% {
+    opacity: 0;
+    transform: translateY(60px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.navigation p {
+  margin-bottom: 0;
+}
+
+nav.navigation {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo p {
+  font-family: var(--negrademo-font);
+  font-size: 1.875rem;
+  font-weight: 400;
+  line-height: 40px;
+}
+
+.img-logo {
+  width: 32px;
+  height: 32px;
+}
+.nav-links-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+/* HERO SECTION */
+
+.hero {
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  height: 100%;
+}
+
+/* Left Image */
+.hero::before,
+.popular::before,
+footer::before {
+  content: "";
+  position: absolute;
+  top: 70px;
+  left: -100px;
+  width: 300px;
+  height: 100%;
+  background: url("../images/leaf/leaf.png") no-repeat left center;
+  background-size: contain;
+  z-index: 1;
+  rotate: 35deg;
+  transform-origin: center;
+  opacity: 0;
+  animation:
+    fadeIn 2s ease-in forwards,
+    rotateClockwise 20s linear infinite;
+}
+
+/* Right Image */
+.hero::after,
+.popular::after,
+footer::after {
+  content: "";
+  position: absolute;
+  top: -300px;
+  right: -130px;
+  width: 300px;
+  height: 100%;
+  background: url("../images/leaf/leaf.png") no-repeat right center;
+  background-size: contain;
+  z-index: 1;
+  rotate: -23deg;
+  transform-origin: center;
+  opacity: 0;
+  animation:
+    fadeIn 2s ease-in forwards,
+    rotateCounterClockwise 20s linear infinite;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Rotate Animations */
+@keyframes rotateClockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateCounterClockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+
+.hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* .hero-heading {
+  font-size: 64px;
+  margin: 0;
+  color: #333;
+} */
+
+.hero-heading {
+  background: var(--text-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 20.625rem;
+  text-align: center;
+  font-family: var(--negrademo-font);
+  line-height: 100%;
+  font-weight: 400;
+  letter-spacing: -2%;
+  opacity: 0;
+  animation: fadeSlideDownScale 1.5s ease-out 0.3s forwards;
+}
+
+@keyframes fadeSlideDownScale {
+  0% {
+    opacity: 0;
+    transform: translateY(-60px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+figure.hero-image img {
+  filter: brightness(0.7);
+  top: -50px;
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  opacity: 0;
+  animation: fadeIn 3s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.hero-content-wrapper {
+  text-align: start;
+  position: relative;
+  bottom: 200px;
+  z-index: 222;
+}
+
+.main-content {
+  color: var(--secondary-color);
+  font-family: var(--negrademo-font);
+  font-size: 3.125rem;
+  line-height: 46px;
+}
+.popular-pricing-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cocktail-name {
+  font-size: 1.875rem;
+  font-family: var(--negrademo-font);
+  letter-spacing: 0%;
+  font-weight: 400;
+}
+.price {
+  font-size: 1.375rem;
+  font-weight: 500;
+}
+
+.popular {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+p.badge {
+  background-color: var(--white);
+  color: var(--black);
+  padding: 10px 20px;
+  font-weight: 400;
+}
+.rating-num {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 20px;
+}
+.customer-review-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.best-cocktail-heading {
+  font-size: 4rem;
+  font-family: var(--negrademo-font);
+  line-height: 90%;
+}
+
+/* CUSTOM ROWS START*/
+
+.custom-row {
+  display: grid;
+  grid-template-columns: 330px 1fr 580px;
+  gap: 20px;
+  align-items: center;
+  height: 285px;
+  overflow: hidden;
+  margin: 40px 0;
+}
+
+.custom-row-2 {
+  display: grid;
+  grid-template-columns: 780px 480px;
+  gap: 20px;
+  align-items: center;
+  height: 285px;
+  overflow: hidden;
+  margin: 40px 0;
+}
+
+/* CUSTOM ROWS END*/
+
+/* CUSTOM COLUMN START*/
+
+.custom-col {
+  border-radius: 20px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.custom-col figure {
+  height: 100%;
+  margin: 0;
+}
+
+.custom-col img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+div#col-2 {
+    background: var(--card-gradient);
+    align-content: center;
+    padding: 0 30px;
+}
+
+/* CUSTOM COLUMN END */
+
+/* best Cocktail section */
+
+.best-cocktail-content h4 {
+    font-family: var(--negrademo-font);
+    font-size: 2.25rem;
+}
+
+.best-cocktail-content span {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0;
+}
+
+.best-cocktail-content span p {
+    margin-bottom: 0;
+}
+
+/* DIVIDERS START*/
+
+.best-cocktail-content .divider {
+    width: 100%;
+    height: 2px;
+    background: var(--white);
+    margin: 15px 0;
+}
+
+.customer-review-wrapper .divider {
+  width: 2px;
+  height: 100px;
+  background-color: var(--white);
+}
+
+/* DIVIDERS END*/
+
+
+/* ART SECTION START*/
+
+figure.art-image {
+    position: relative;
+}
+
+figure.art-image img {
+    position: absolute;
+    left: 310px;
+    top: -310px;
+    opacity: 0;
+    animation: fadeIn 2s ease-in forwards;
+}
+
+.art-content-wrapper span {
+    font-size: 1.125rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.art-content-wrapper span p {
+    margin-bottom: 0;
+}
+
+/* ART SECTION END*/
+
+/* FOOTER START */
+
+.footer-content h2 {
+    font-size: 5.625rem;
+    font-family: var(--negrademo-font);
+}
+
+.footer-content p {
+    font-size: 1.125rem;
+    letter-spacing: 4px;
+    line-height: 30px;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-top: 30px;
+}
+.footer-content h5 {
+    font-size: 1.875rem;
+}
+
+figure.footer-img {
+    /* width: 100%; */
+    position: absolute;
+    top: 480px;
+    left: 1560px;
+    right: 0;
+}
+
+figure.footer-img img {
+    width: 500px;
+    height: 320px;
+    object-fit: cover;
+}
+
+.icon {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.icon a i {
+    font-size: 1.25rem;
+}
+
+/* .icon a:hover {
+    color: var(--secondary-color);
+    transition: all 3s ease-in-out;
+   transform: scale(1.2);
+} */
