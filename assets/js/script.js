@@ -1,13 +1,13 @@
-const lenis = new Lenis({
-  duration: 1.2,
-  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  smooth: true
-});
-
-
+ AOS.init({
+    once: false,         
+    duration: 1000,
+    delay: 200,
+    offset: 100,        
+  });
+  
+const lenis = new Lenis();
 function raf(time) {
   lenis.raf(time);
   requestAnimationFrame(raf);
 }
-
 requestAnimationFrame(raf);
